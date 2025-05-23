@@ -6,7 +6,7 @@ import {
   updateService,
   deleteService,
 } from "../controllers/serviceController.js";
-import IsExisted  from "../middlewares/isExisted.js";
+import IsExisted from "../middlewares/isExisted.js";
 
 const router = express.Router();
 

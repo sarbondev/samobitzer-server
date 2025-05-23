@@ -14,8 +14,7 @@ export const getAllProjects = async (req, res) => {
     const projects = await Project.find({
       title: titleRegExp,
       category: categoryRegExp,
-    })
-    .limit(req.query.pageSize);
+    }).limit(req.query.pageSize);
     res.status(200).json({ data: projects, total: projects.length });
   } catch (error) {
     res.status(500).json({ error: error.message });

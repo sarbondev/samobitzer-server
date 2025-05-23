@@ -6,7 +6,7 @@ import {
   getOneProject,
   updateProject,
 } from "../controllers/projectController.js";
-import IsExisted  from "../middlewares/isExisted.js";
+import IsExisted from "../middlewares/isExisted.js";
 
 const router = express.Router();
 
