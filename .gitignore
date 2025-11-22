@@ -1,2 +1,8 @@
+# Dependencies
 node_modules
+
+# Environment Variables
 .env
+
+# Uploaded Files
+uploads
