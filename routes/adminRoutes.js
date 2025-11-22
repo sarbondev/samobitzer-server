@@ -7,15 +7,16 @@ import {
   LoginToAccount,
   UpdateAccount,
 } from "../controllers/adminController.js";
-import IsExisted from "../middlewares/isExisted.js";
+import authCheck from "../middlewares/authCheck.js";
 
 const router = express.Router();
 
-router.get("/", IsExisted, GetAllAccounts);
-router.get("/profile", IsExisted, getUser);
 router.post("/login", LoginToAccount);
-router.post("/register", IsExisted, CreateAccount);
-router.delete("/delete/:id", IsExisted, DeleteAccount);
-router.put("/update/:id", IsExisted, UpdateAccount);
+
+router.get("/", authCheck, GetAllAccounts);
+router.get("/profile", authCheck, getUser);
+router.post("/", authCheck, CreateAccount);
+router.put("/:id", authCheck, UpdateAccount);
+router.delete("/:id", authCheck, DeleteAccount);
 
 export default router;

@@ -6,14 +6,16 @@ import {
   updateService,
   deleteService,
 } from "../controllers/serviceController.js";
-import IsExisted from "../middlewares/isExisted.js";
+import authCheck from "../middlewares/authCheck.js";
+import { upload } from "../middlewares/Uploader.js";
 
 const router = express.Router();
 
 router.get("/", getAllServices);
 router.get("/:id", getOneService);
-router.post("/create", IsExisted, createNewService);
-router.put("/update/:id", IsExisted, updateService);
-router.delete("/delete/:id", IsExisted, deleteService);
+
+router.post("/", authCheck, upload.single("image"), createNewService);
+router.put("/:id", authCheck, upload.single("image"), updateService);
+router.delete("/:id", authCheck, deleteService);
 
 export default router;
