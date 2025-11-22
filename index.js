@@ -6,10 +6,8 @@ import path from "path";
 import fs from "fs/promises";
 import { fileURLToPath } from "url";
 
-// Route Imports
-import serviceRoutes from "./routes/serviceRoutes.js";
-import projectRoutes from "./routes/projectRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";
+// rootRoutes
+import rootRoutes from "./routes/rootRoutes.js";
 
 dotenv.config();
 
@@ -29,9 +27,7 @@ app.use("/uploads", express.static(UPLOADS_DIR));
 
 // Route Middleware
 app.get("/", (_, res) => res.send("API is running..."));
-app.use("/api/services", serviceRoutes);
-app.use("/api/projects", projectRoutes);
-app.use("/api/admins", adminRoutes);
+app.use("/api", rootRoutes);
 
 // Global Error Handler (Catch-all for internal errors)
 app.use((err, req, res, next) => {
